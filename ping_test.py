@@ -4,7 +4,7 @@ def get_gateway():
     try:
         result = subprocess.run(["ip","route"], capture_output=True, text= True, check= True)
         output = result.stdout.splitlines()
-
+        #gets the result and goes through each line until it gets to the line that starts with default
         for line in output:
             if line.startswith("default"):
                 splited = line.split()
@@ -14,6 +14,7 @@ def get_gateway():
     except Exception as e:
         print(f"Getting gateway error: {e}")
 
+#pings the gateway
 def local_connT(gateway):
     try:
         result = subprocess.run(["ping","-c","4",gateway], capture_output=True, text= True, check= True)
@@ -24,6 +25,7 @@ def local_connT(gateway):
     except Exception as e:
         print(f"Gateway cannot be pinged: {e}")
 
+#pings the dns remote ip
 def remote_connT():
     try:
         result = subprocess.run(["ping","-c","4","129.21.3.17"], capture_output=True, text= True, check= True)
@@ -34,7 +36,7 @@ def remote_connT():
     except Exception as e:
        print(f"remote ip cannot be pinged: {e}")
 
-       
+   #ping google.com and send print if it's successful or not    
 def dns_test():
     try:
         result = subprocess.run(["ping","-c","4","www.google.com"], capture_output=True, text= True, check= True)
@@ -47,6 +49,7 @@ def dns_test():
 
 def main():
     while True:
+        # assign numbers to each choices
         user_in = input("Enter the number corresponding to you choice:\n"
                         "1. Display the default gateway\n"
                         "2. Test Local Connectivity\n"
