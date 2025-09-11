@@ -66,6 +66,7 @@ def main():
         elif(user_in == "4"):
             dns_test()
         elif(user_in == "5"):
+            print("Bye!!")
             break
 
 
