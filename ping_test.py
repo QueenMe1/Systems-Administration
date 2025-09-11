@@ -19,7 +19,7 @@ def local_connT(gateway):
     try:
         result = subprocess.run(["ping","-c","4",gateway], capture_output=True, text= True, check= True)
         if result.returncode == 0:
-            print("Ping is successful")
+            print("LOCAL CONNECTION TEST WORKED!! Ping is successful")
         else: 
             print("request timed out or failed")
     except Exception as e:
@@ -30,7 +30,7 @@ def remote_connT():
     try:
         result = subprocess.run(["ping","-c","4","129.21.3.17"], capture_output=True, text= True, check= True)
         if result.returncode == 0:
-            print("Ping is successful")
+            print("REMOTE CONNECTION TEST WORKED!! Ping is successful")
         else:
             print("request timed out")
     except Exception as e:
@@ -41,7 +41,7 @@ def dns_test():
     try:
         result = subprocess.run(["ping","-c","4","www.google.com"], capture_output=True, text= True, check= True)
         if result.returncode == 0:
-            print("Ping is successful")
+            print("DNS TEST PASSED!!! Ping is successful")
         else:
             print("request timed out or failed")
     except Exception as e:
@@ -55,11 +55,11 @@ def main():
                         "2. Test Local Connectivity\n"
                         "3. Test Remote Connectivity\n"
                         "4. Test DNS Resolution\n"
-                        "5. Exit/Quit the script")
+                        "5. Exit/Quit the script\n")
         
         # correspond each number to the functions.
         if user_in == "1":
-            print(get_gateway())
+            print("Your Gateway is " + get_gateway())
         elif(user_in == "2"):
             gt = get_gateway()
             if gt:
