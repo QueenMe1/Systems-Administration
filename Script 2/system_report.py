@@ -35,8 +35,8 @@ def main():
     hostname = cmd1.stdout.strip()
     cmd2 = subprocess.run("domainname")
     domainname = cmd2.stdout.strip()
-    print("Hostname:                    " + hostname)
-    print("Domain Name:                    " + domainname)
+    print(f"Hostname:                    {hostname}")
+    print(f"Domain Name:                    {domainname}")
 
     #Section 2 - Network Info
     print("Network Information \n")
@@ -52,11 +52,11 @@ def main():
     camp2 = camp.split("\n")
     DNS1 = camp2[0]
     DNS2 = camp2[1]
-    print("IP Address:                    " + ip_addr)
-    print("Gateway:                    " + gateway)
-    print("Network Mask:                    " + netMask)
-    print("DNS1:                    " + DNS1)
-    print("DNS2:                    " + DNS2)
+    print(f"IP Address:                    {ip_addr}")
+    print(f"Gateway:                    {gateway}")
+    print(f"Network Mask:                    {netMask}")
+    print(f"DNS1:                    {DNS1}")
+    print(f"DNS2:                    {DNS2}")
 
     #Section 3 - OS INFO
     print("Operating System Information \n")
@@ -74,9 +74,9 @@ def main():
     k = cmd7.stdout.strip()
     k1 = k.split()
     kernel = k1[2]
-    print("Operating System:                    " + os_name)
-    print("OS Version:                    " + os_v)
-    print("Kernel Version:                    " + kernel)
+    print(f"Operating System:                    {os_name}")
+    print(f"OS Version:                    {os_v}")
+    print(f"Kernel Version:                    {kernel}")
 
     # Section 4 - Storage 
     print("Storage Information \n")
@@ -87,9 +87,9 @@ def main():
     size = t3[1]
     used = t3[2]
     free = t3[3]
-    print("Drive Total:                    " + size)
-    print("Drive Used:                    " + used)
-    print("Drive Free:                    " + free)
+    print(f"Drive Total:                    {size}")
+    print(f"Drive Used:                    {used}")
+    print(f"Drive Free:                    {free}")
 
     # Section 5 - Processor Info
     print("Processor Information \n")
@@ -104,9 +104,9 @@ def main():
     c1 = cmd0.stdout.strip()
     c2 = cmd_1.stdout.strip()
     num_cores = int(c1) * int(c2)
-    print("CPU Model:                    " + c_name)
-    print("Number of Processors:                    " + pr)
-    print("Number of Cores:                    " + str(num_cores))
+    print(f"CPU Model:                    {c_name}")
+    print(f"Number of Processors:                    {pr}")
+    print(f"Number of Cores:                    {num_cores}")
 
     # Section 6 - Ram
     print("Memory Information \n")
@@ -116,8 +116,8 @@ def main():
     r = s_lines[1].split()
     total = r[1]
     fr_space = r[3]
-    print("Total RAM:                    " + total)
-    print("Available RAM:                    " + fr_space)
+    print(f"Total RAM:                    {total}")
+    print(f"Available RAM:                    {fr_space}")
     
 
 
