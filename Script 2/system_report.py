@@ -23,24 +23,29 @@ def get_gateway():
 
 def main():
     subprocess.run("clear")
-    # hostname = platform.node()
-    # logfile = os.path.expanduser(f"~/{hostname}_system_report.log")
+    hostname = platform.node()
+    logfile = os.path.expanduser(f"~/{hostname}_system_report.log")
 
-    print(f"System Report - {datetime.now()}" )
-    print("\n")
+    with open(logfile,"w") as file:
+        def write_print(message=""):
+            print(message)
+            file.write(message + "\n")
+
+    write_print(f"System Report - {datetime.now()}" )
+    write_print("\n")
 
     # Find Hostname and Domain Name - Section 1
-    print("Device Information \n")
+    write_print("Device Information \n")
     cmd1 = subprocess.run("hostname", capture_output=True, text= True, shell= True)
     hostname = cmd1.stdout.strip()
     cmd2 = subprocess.run("domainname", capture_output=True, text= True, shell= True)
     domainname = cmd2.stdout.strip()
-    print(f"Hostname:                    {hostname}")
-    print(f"Domain Name:                    {domainname}")
+    write_print(f"Hostname:                    {hostname}")
+    write_print(f"Domain Name:                    {domainname}")
 
-    print("\n")
+    write_print("\n")
     #Section 2 - Network Info
-    print("Network Information \n")
+    write_print("Network Information \n")
     cmd3= subprocess.run(["hostname -I"], capture_output=True, text= True, shell= True)
     ip_addr = cmd3.stdout.strip()
     gateway = get_gateway()
@@ -53,15 +58,15 @@ def main():
     camp2 = camp.split()
     DNS1 = camp2[0]
     DNS2 = camp2[1]
-    print(f"IP Address:                      {ip_addr}")
-    print(f"Gateway:                         {gateway}")
-    print(f"Network Mask:                    {netMask}")
-    print(f"DNS1:                            {DNS1}")
-    print(f"DNS2:                            {DNS2}")
+    write_print(f"IP Address:                      {ip_addr}")
+    write_print(f"Gateway:                         {gateway}")
+    write_print(f"Network Mask:                    {netMask}")
+    write_print(f"DNS1:                            {DNS1}")
+    write_print(f"DNS2:                            {DNS2}")
 
-    print("\n")
+    write_print("\n")
     #Section 3 - OS INFO
-    print("Operating System Information \n")
+    write_print("Operating System Information \n")
     cmd6 = subprocess.run("cat /etc/*release", capture_output=True, text= True, shell= True)
     tr = cmd6.stdout.strip()
     #os name
@@ -76,13 +81,13 @@ def main():
     k = cmd7.stdout.strip()
     k1 = k.split()
     kernel = k1[2]
-    print(f"Operating System:                    {os_name}")
-    print(f"OS Version:                       {os_v}")
-    print(f"Kernel Version:                      {kernel}")
+    write_print(f"Operating System:                    {os_name}")
+    write_print(f"OS Version:                       {os_v}")
+    write_print(f"Kernel Version:                      {kernel}")
 
-    print("\n")
+    write_print("\n")
     # Section 4 - Storage
-    print("Storage Information \n")
+    write_print("Storage Information \n")
     cmd8 =  subprocess.run("df -h /", capture_output=True, text= True, shell= True)
     t = cmd8.stdout.strip()
     t2 = t.split("\n")
@@ -90,13 +95,13 @@ def main():
     size = t3[1]
     used = t3[2]
     free = t3[3]
-    print(f"Drive Total:                    {size}")
-    print(f"Drive Used:                     {used}")
-    print(f"Drive Free:                     {free}")
+    write_print(f"Drive Total:                    {size}")
+    write_print(f"Drive Used:                     {used}")
+    write_print(f"Drive Free:                     {free}")
 
-    print("\n")
+    write_print("\n")
     # Section 5 - Processor Info
-    print("Processor Information \n")
+    write_print("Processor Information \n")
     cmd8 = subprocess.run("lscpu | grep 'Model name'", capture_output=True, text= True, shell= True)
     p = cmd8.stdout.strip()
     p2 = p.split(":")
@@ -108,20 +113,20 @@ def main():
     c1 = cmd0.stdout.strip()
     c2 = cmd_1.stdout.strip()
     num_cores = int(c1) * int(c2)
-    print(f"CPU Model:                        {c_name}")
-    print(f"Number of Processors:                    {pr}")
-    print(f"Number of Cores:                         {num_cores}")
+    write_print(f"CPU Model:                        {c_name}")
+    write_print(f"Number of Processors:                    {pr}")
+    write_print(f"Number of Cores:                         {num_cores}")
 
-    print("\n")
+    write_print("\n")
     # Section 6 - Ram
-    print("Memory Information \n")
+    write_print("Memory Information \n")
     cmd_2 = subprocess.run("free | grep 'Mem:'", capture_output=True, text= True, shell= True)
     lines = cmd_2.stdout
     r = lines.split()
     total = r[1]
     fr_space = r[3]
-    print(f"Total RAM:                        {total}")
-    print(f"Available RAM:                    {fr_space}")
+    write_print(f"Total RAM:                        {total}")
+    write_print(f"Available RAM:                    {fr_space}")
    
 
 
