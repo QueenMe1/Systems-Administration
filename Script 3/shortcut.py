@@ -59,7 +59,7 @@ def delete_symlink():
 
 def generate_report():
     print("="*50)
-    print("Report".center())
+    print("Report".center(50))
     print("="*50)
 
     home = get_home()
@@ -91,7 +91,7 @@ def main():
     subprocess.run("clear")
     while True:
         print("="*50)
-        print("MAKE A SUYMBOLIC LINK".center())
+        print("MAKE A SUYMBOLIC LINK".center(50))
         print("="*50)
 
         print()
@@ -101,16 +101,16 @@ def main():
         "[3] Generate a Symbolic Link Report\n"
         "[4] Quit")
 
-        input = input("Enter a choice (1 - 4). To Quit either enter 4 or quit.")
+        u_input = input("Enter a choice (1 - 4). To Quit either enter 4 or quit.\n>")
 
-        if input in ["4","quit"]:
+        if u_input in ["4","quit"]:
             print("Byeeeeeeeeeeeeeeeeee!!!!!!!!")
             break
-        elif input == "1":
+        elif u_input == "1":
             create_symlink()
-        elif input == "2":
+        elif u_input == "2":
             delete_symlink()
-        elif input == "3":
+        elif u_input == "3":
             generate_report()
         else:
             print("Please enter the appropriate numbers between 1 - 4")
