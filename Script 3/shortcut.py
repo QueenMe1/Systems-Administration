@@ -113,7 +113,7 @@ def main():
         elif u_input == "3":
             generate_report()
         else:
-            print("Please enter the appropriate numbers between 1 - 4")
+            print("Please enter the appropriate numbers between 1 - 4") 
 
 
 
