@@ -49,7 +49,7 @@ def delete_symlink():
     if not link_path.exists():
         print("Error: No such file or link on your desktop")
     if not link_path.is_symlink():
-        print("Error This specified file is not a sumbolic link")
+        print("Error This specified file is not a symbolic link")
     
     try:
         link_path.unlink()
@@ -83,6 +83,7 @@ def generate_report():
         
         print()
         sum_links = sum(1 for p in home.rglob('*') if p.is_symlink())
+
         print(f"Total Symbolic link in {home}: {sum_links}")
         print("-" *60)
 
