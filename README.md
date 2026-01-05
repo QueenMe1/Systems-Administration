@@ -1,2 +1,15 @@
 # Systems-Administration
-Hello, I'm taking as Sys Admin class this Fall and We have homework that entales writing scripts. Therefore, I'm using this repo to save my work and to also show what I learnt and my progress.
+Scripting Homework, Script 1 - 4:
+
+Script 1:
+  f
+
+Script 2:
+  c
+
+Script 3:
+ d
+
+Script 4:
+  g
+
